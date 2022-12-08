@@ -16,6 +16,14 @@ Bringing up the Docker Compose network with `site` instead of just using `up`, e
 
 Clone the project to a local dir and move inside that folder 
 
+## Folder permissions
+
+AS you know Laravel required storage/ bootstrap/cache folders writable
+
+## Copy  the .env.example to .env
+
+cp .env.example .env
+
 ## Steps to up the container.
 
 docker-compose up -d --build
