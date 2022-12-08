@@ -11,7 +11,10 @@ class DownloadController extends BaseController{
 
 
 
-
+    /**
+     * Download the file using UI
+     * @return file CSV Stream
+     */
     public function downloadFile(){
 
       

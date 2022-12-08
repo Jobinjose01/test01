@@ -30,16 +30,13 @@ class Helper {
           if((date('N', strtotime($bonus_date)) >= 6)){
 
             $bonus_date = date('Y-m-d', strtotime('next tuesday', strtotime($bonus_date)));
-          }
-
-          
+          }      
 
           $data[] = [
                         'month' =>   $month,
                         'payment_date' => $payment_date,
                         'bonus_date' => $bonus_date,
-                    ];
-         
+                    ];         
                         
         }
         
@@ -47,7 +44,10 @@ class Helper {
 
     }
 
-
+    /**
+     * Download the CSV file load the path from config
+     * @return string file name with path
+     */
     public static function download(){
 
                
@@ -57,15 +57,16 @@ class Helper {
         array_unshift($list, array_keys($list[0]));
 
         
-        $file_name = storage_path('app/public/docs/salary.csv');
+        $file_path = storage_path(config('salary.download_path'));
+        $file_name = "salary.csv"; 
 
-        $fp = fopen($file_name, 'w');
+        $fp = fopen($file_path . $file_name, 'w');
         foreach ($list as $row) { 
             fputcsv($fp, $row);
         }
         fclose($fp);
         
-       return $file_name;
+       return $file_path.$file_name;
         
     }
 
